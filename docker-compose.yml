@@ -15,7 +15,7 @@ services:
     volumes:
       - './dockervolume/mariadb:/data/db'
   mongo:
-    image: mongodb
+    image: mongo
     container_name: "mongodb"
     restart: always
     environment:
