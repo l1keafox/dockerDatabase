@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-
-var MONGODB_URI = "mongodb://root:example@raspberrypi.local:27017"
+require('dotenv').config({path:__dirname+'/.env'})
+const DOCKER_URL = process.env.DOCKER_URL.trim().replace(/[';]/g, '');
+const MONGODB_URI = `mongodb://root:example@${DOCKER_URL}:27017`;
 
 if(MONGODB_URI  ){
   console.log("  -MONGOO>Connecting too : ",MONGODB_URI);

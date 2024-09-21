@@ -1,5 +1,5 @@
 const db = require("./connection");
 
 db.once("open", () => {
-  console.log("here?")
+  console.log("MongoDB open here!")
 });
