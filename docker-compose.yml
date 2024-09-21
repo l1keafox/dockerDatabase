@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: raymond
+      MYSQL_DATABASE: sql
+      MYSQL_USER: fox
+      MYSQL_PASSWORD: raymond
+    ports:
+      - "3306:3306"
+    volumes:
+      - './dockervolume/mariadb:/data/db'
+  mongo:
+    image: mongodb
+    container_name: "mongodb"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - './dockervolume/mongodb:/data/db'
+    ports:
+      - 27017:27017
