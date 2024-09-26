@@ -19,6 +19,7 @@ services:
       POSTGRES_DB: my_database
     volumes:
       - './dockervolume/postgresdb:/data/db'
+#      - './init-scripts/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh'  # Mount the script
     ports:
       - "5432:5432"
     networks:
