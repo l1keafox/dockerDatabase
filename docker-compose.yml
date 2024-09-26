@@ -1,17 +1,4 @@
 services:
-  mariadb:
-    image: mariadb
-    container_name: mariadb
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: raymond
-      MYSQL_DATABASE: sql
-      MYSQL_USER: fox
-      MYSQL_PASSWORD: raymond
-    ports:
-      - "3306:3306"
-    volumes:
-      - './dockervolume/mariadb:/data/db'
   mongo:
     image: mongo
     container_name: "mongodb"
@@ -23,3 +10,20 @@ services:
       - './dockervolume/mongodb:/data/db'
     ports:
       - 27017:27017
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: fox
+      POSTGRES_PASSWORD: raymond
+      POSTGRES_DB: my_database
+    volumes:
+      - './dockervolume/postgresdb:/data/db'
+    ports:
+      - "5432:5432"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
