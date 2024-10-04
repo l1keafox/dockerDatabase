@@ -10,6 +10,11 @@ services:
       - './dockervolume/mongodb:/data/db'
     ports:
       - 27017:27017
+    command: ["mongod", "--bind_ip", "0.0.0.0"]  # Bind to all interfaces
+
+    networks:
+      - backend
+      
   postgres:
     image: postgres:15
     container_name: postgres_db
@@ -22,8 +27,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - my_network
-
+      - backend
 networks:
-  my_network:
+  backend:
     driver: bridge

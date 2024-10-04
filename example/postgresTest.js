@@ -3,14 +3,14 @@ require('dotenv').config({ path: __dirname + '/.env' });
 
 // Create the connection pool
 const pool = new Pool({
-  host: "localhost", // If running from a different machine, replace with your Raspberry Pi's IP address
+  host: "raspberrypi.local", // If running from a different machine, replace with your Raspberry Pi's IP address
   user: 'fox',
   password: 'raymond',
   database: 'my_database',
   port: 5432, // Default port for PostgreSQL
   max: 10, // Max number of clients in the pool
   idleTimeoutMillis: 30000, // Close idle clients after 30 seconds
-  connectionTimeoutMillis: 2000, // Return an error after 2 seconds if connection could not be established
+  connectionTimeoutMillis: 200000, // Return an error after 2 seconds if connection could not be established
 });
 
 async function testConnection() {
@@ -22,5 +22,5 @@ async function testConnection() {
     console.error('Error connecting to the database:', err.message);
   }
 }
-
+//pool.connect();
 testConnection();
